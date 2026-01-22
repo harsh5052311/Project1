@@ -1,54 +1,35 @@
-# landing_page.py
+from flask import Flask
 
-def print_landing_page():
-    # ANSI escape codes for colors
-    RESET = "\033[0m"
-    BOLD = "\033[1m"
-    BLUE = "\033[94m"
-    GREEN = "\033[92m"
-    CYAN = "\033[96m"
-    YELLOW = "\033[93m"
+app = Flask(__name__)
 
-    # Clear screen
-    import os
-    os.system('cls' if os.name == 'nt' else 'clear')
+def get_landing_page():
+    return """
+    <html>
+      <head><title>Landing Page</title></head>
+      <body style="font-family:Arial; text-align:center;">
+        <h1 style="color:green;">WELCOME TO MY LANDING PAGE</h1>
+        <nav style="margin:20px;">
+          <a href="#">Home</a> | <a href="#">About</a> | <a href="#">Services</a> | <a href="#">Contact</a>
+        </nav>
+        <hr>
+        <p>This is a basic Python landing page demo.<br>
+        You can customize this text to showcase your project, portfolio, or business.</p>
+        <hr>
+        <div style="display:flex; justify-content:center; gap:20px;">
+          <div style="border:1px solid #00cccc; padding:20px;">CONTENT</div>
+          <div style="border:1px solid #00cccc; padding:20px;">CONTENT</div>
+        </div>
+        <hr>
+        <footer style="margin-top:30px; color:blue;">
+          Thank you for visiting!
+        </footer>
+      </body>
+    </html>
+    """
 
-    # Header
-    print(BOLD + BLUE + "=" * 50 + RESET)
-    print(BOLD + GREEN + "           WELCOME TO MY LANDING PAGE           " + RESET)
-    print(BOLD + BLUE + "=" * 50 + RESET)
-    print("")
-
-    # Navigation
-    print(CYAN + "   [ Home ]   [ About ]   [ Services ]   [ Contact ]" + RESET)
-    print("")
-    print(YELLOW + "-" * 50 + RESET)
-
-    # Body content
-    print(GREEN + "   This is a basic Python landing page demo." + RESET)
-    print("   You can customize this text to showcase")
-    print("   your project, portfolio, or business.")
-    print(YELLOW + "-" * 50 + RESET)
-    print("")
-
-    # Content boxes
-    box = [
-        "***************   ***************",
-        "*             *   *             *",
-        "*   CONTENT   *   *   CONTENT   *",
-        "*             *   *             *",
-        "***************   ***************"
-    ]
-    for line in box:
-        print(BOLD + CYAN + line + RESET)
-
-    print("")
-    # Footer
-    print(BOLD + BLUE + "=" * 50 + RESET)
-    print(BOLD + GREEN + "           Thank you for visiting!              " + RESET)
-    print(BOLD + BLUE + "=" * 50 + RESET)
-
+@app.route("/")
+def landing():
+    return get_landing_page()
 
 if __name__ == "__main__":
-    print_landing_page()
-
+    app.run(host="0.0.0.0", port=3000)
