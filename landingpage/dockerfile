@@ -1,0 +1,8 @@
+
+FROM python:3.10-slig directory
+WORKDIR /app
+COPY landingpage.py requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+EXPOSE 3000
+CMD ["python", "landing_page.py"]
+
