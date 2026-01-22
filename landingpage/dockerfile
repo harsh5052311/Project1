@@ -4,5 +4,5 @@ WORKDIR /app
 COPY landingpage.py requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 3000
-CMD ["python", "landing_page.py"]
+CMD ["python", "landingpage.py"]
 
