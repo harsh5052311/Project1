@@ -32,4 +32,4 @@ def landing():
     return get_landing_page()
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=3000)
+    app.run(host="0.0.0.0", port=80)

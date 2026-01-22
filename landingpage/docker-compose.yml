@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  landingpage:
+    build: .
+    container_name: landingpage_app
+    ports:
+      - "3000:80"
+    restart: always
+
